@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="video-container">
+    <video autoplay loop muted playsinline>
+        <source src="{{ service.video_key }}" type="video/mp4">
+        Ваш браузер не поддерживает видео.
+    </video>
+    
+    <div class="video-overlay">
+        <div class="feed-content">
+            <div class="feed-left">
+                <h2 class="genre-title">{{ service.title }}</h2>
+                <p class="genre-desc">
+                    {% if full %}
+                        {{ service.description }}
+                        <a href="/feed?id={{ service.id }}&next={{ 'true' if next else 'false' }}" class="more-link">меньше</a>
+                    {% else %}
+                        {{ service.description[:100] }}...
+                        <a href="/feed?id={{ service.id }}&next={{ 'true' if next else 'false' }}&full=1" class="more-link">ещё</a>
+                    {% endif %}
+                </p>
+                <div class="feed-pills">
+                    <span class="pill">Частота: {{ (service.frequency * 100)|round(0) }}%</span>
+                    <span class="pill">Уверенность: {{ service.confidence }}</span>
+                </div>
+            </div>
+            <div class="feed-right">
+                <div class="like-wrapper">
+                    <div class="like-circle">
+                        <span class="heart-icon">♡</span>
+                    </div>
+                    <span class="like-count">{{ likes_count }}</span>
+                </div>
+                <div class="next-wrapper">
+                    <a href="/feed?id={{ service.id }}&next=true" class="next-btn">
+                        <span class="arrow-down">▼</span>
+                    </a>
+                    <span class="next-label">Далее</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

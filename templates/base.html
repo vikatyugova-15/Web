@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GenreSense</title>
+    <link rel="stylesheet" href="/static/css/style.css?v=5">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <main class="app-main">
+            {% block content %}{% endblock %}
+        </main>
+
+        <nav class="tab-bar">
+            <a href="/feed?id=1" class="tab-btn {% if request.url.path.startswith('/feed') %}active{% endif %}">
+                Лента
+            </a>
+            <a href="/add" class="tab-btn {% if request.url.path == '/add' %}active{% endif %}">
+                Добавление
+            </a>
+            <a href="/catalog" class="tab-btn {% if request.url.path.startswith('/catalog') %}active{% endif %}">
+                Жанры
+            </a>
+        </nav>
+    </div>
+</body>
+</html>
