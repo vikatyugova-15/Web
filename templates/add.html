@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="with-padding">
+    <div class="add-form">
+        <h2 class="add-title">Добавление</h2>
+
+        
+        
+
+        <div class="media-row">
+            <div class="media-box">
+                <div class="media-placeholder">+</div>
+                <span>Фото</span>
+            </div>
+            <div class="media-box">
+                <div class="media-placeholder">+</div>
+                <span>Видео</span>
+            </div>
+        </div>
+
+        <div class="field-group">
+            <label>Название жанра</label>
+            <textarea rows="3" readonly>{{ draft.title }}</textarea>
+        </div>
+
+        <div class="field-group">
+            <label>Фрагмент текста</label>
+            <textarea rows="3" readonly>Введите анализируемый фрагмент...</textarea>
+        </div>
+
+        <button class="save-btn" disabled>Сохранить черновик</button>
+    </div>
+</div>
+{% endblock %}
